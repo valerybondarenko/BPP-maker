@@ -94,6 +94,10 @@ private:
         FOURTH_CORNER_Y = 23,
         FOURTH_CORNER_Z = 33
     };
+
+    // Entity interface
+private:
+    void draw();
 };
 
 

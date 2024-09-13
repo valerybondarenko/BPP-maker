@@ -107,5 +107,10 @@ void Point::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Point::draw()
+{
+
+}
+
 } // namespace
 

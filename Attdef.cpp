@@ -211,5 +211,10 @@ void Attdef::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Attdef::draw()
+{
+
+}
+
 } // namespace
 

@@ -179,5 +179,10 @@ void Text::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Text::draw()
+{
+
+}
+
 } // namespace
 

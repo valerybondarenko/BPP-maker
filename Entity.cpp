@@ -64,6 +64,11 @@ const Entity & Entity::operator = (const Entity &obj)
     return *this;
 }
 
+void Entity::draw()
+{
+
+}
+
 bool Entity::readCommonPropertiesDXF (Tokenizer &tokenizer)
 {
     switch ( tokenizer.getCode() )
@@ -112,6 +117,7 @@ bool Entity::readCommonPropertiesDXF (Tokenizer &tokenizer)
 
     return false;
 }
+
 
 
 

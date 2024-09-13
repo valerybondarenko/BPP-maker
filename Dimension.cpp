@@ -253,5 +253,10 @@ void Dimension::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Dimension::draw()
+{
+
+}
+
 } // namespace
 

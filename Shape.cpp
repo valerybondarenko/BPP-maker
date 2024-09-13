@@ -137,5 +137,10 @@ void Shape::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Shape::draw()
+{
+
+}
+
 } // namespace
 

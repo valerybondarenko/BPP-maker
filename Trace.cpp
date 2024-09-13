@@ -151,5 +151,10 @@ void Trace::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Trace::draw()
+{
+
+}
+
 } // namespace
 

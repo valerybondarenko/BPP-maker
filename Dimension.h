@@ -209,6 +209,10 @@ private:
         ANGLE         = 50,
         DIRECTION     = 51
     };
+
+    // Entity interface
+private:
+    void draw();
 };
 
 inline double Dimension::getAngle () const

@@ -115,5 +115,10 @@ void Line3d::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Line3d::draw()
+{
+
+}
+
 } // namespace
 

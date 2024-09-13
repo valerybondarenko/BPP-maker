@@ -199,5 +199,10 @@ void Insert::readAttributesDXF (Tokenizer &tokenizer)
     }
 }
 
+void Insert::draw()
+{
+
+}
+
 } // namespace
 

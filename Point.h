@@ -83,6 +83,10 @@ private:
         Z            = 30,
         ANGLE_X_AXIS = 50
     };
+
+    // Entity interface
+private:
+    void draw();
 };
 
 

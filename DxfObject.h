@@ -27,7 +27,9 @@ namespace ru_tcl_dxf
  */
 class _TCL_DXF_CLASS DxfObject
 {
+
 public:
+
 
     // Конструкторы
     // ============
@@ -40,6 +42,8 @@ public:
      * Считывание объекта из dxf файла.
      */
     virtual void readDXF (Tokenizer &tokenizer) = 0;
+
+
 };
 
 } // namespace

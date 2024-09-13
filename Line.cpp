@@ -115,5 +115,10 @@ void Line::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Line::draw()
+{
+
+}
+
 } // namespace
 

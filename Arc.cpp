@@ -121,5 +121,10 @@ void Arc::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
+void Arc::draw()
+{
+
+}
+
 } // namespace
 

@@ -171,6 +171,10 @@ private:
         SMOOTH_SURFACE_N_DENSITIES = 74,
         SMOOTH_SURFACE_TYPE        = 75
     };
+
+    // Entity interface
+private:
+    void draw();
 };
 
 

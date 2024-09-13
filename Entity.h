@@ -74,6 +74,9 @@ public:
 
     string getName() const;
     void setName(const string &value);
+private:
+    virtual void draw();
+
 
 protected:
 

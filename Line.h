@@ -74,6 +74,10 @@ private:
         END_Y   = 21,
         END_Z   = 31
     };
+
+    // Entity interface
+    private:
+    void draw();
 };
 
 
