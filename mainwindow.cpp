@@ -12,7 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 using namespace ru_tcl_dxf;
     Translator tr;
-  //  tr.readDXF("C://1.DXF");
+    tr.readDXF("C://1.DXF");
+    tr.getEntities()->getItems().at(0)->draw();
+
+
 
 
 

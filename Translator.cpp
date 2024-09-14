@@ -20,10 +20,15 @@
 namespace ru_tcl_dxf
 {
 
+Entities *Translator::getEntities() const
+{
+    return entities;
+}
+
 Translator::Translator ()
-:
-    header(new Header()),
-    tables(new Tables()),
+    :
+      header(new Header()),
+      tables(new Tables()),
     blocks(new Blocks()),
     entities(new Entities())
 {

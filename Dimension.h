@@ -211,7 +211,7 @@ private:
     };
 
     // Entity interface
-private:
+public:
     void draw();
 };
 

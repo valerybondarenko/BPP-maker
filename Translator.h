@@ -102,6 +102,8 @@ public:
      */
     void readDXF (const string &fileName);
 
+    Entities *getEntities() const;
+
 private:
 
     void readSection (Tokenizer &tokenizer);

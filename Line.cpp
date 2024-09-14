@@ -23,7 +23,9 @@ Line::Line ()
     Entity(),
     start(),
     end()
+
 {
+
 }
 
 Line::~Line ()
@@ -111,13 +113,13 @@ void Line::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-
+draw();
     tokenizer.gotoBack();
 }
 
 void Line::draw()
 {
-
+ qDebug()<<"Line Start - ="<<getStart().getX()<<","<<getStart().getY()<<endl;
 }
 
 } // namespace

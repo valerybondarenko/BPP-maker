@@ -20,6 +20,7 @@
 
 #include "DxfObject.h"
 #include "Point3d.h"
+#include <QDebug>
 
 namespace ru_tcl_dxf
 {
@@ -74,7 +75,7 @@ public:
 
     string getName() const;
     void setName(const string &value);
-private:
+public:
     virtual void draw();
 
 
