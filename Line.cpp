@@ -113,13 +113,13 @@ void Line::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-draw();
+
     tokenizer.gotoBack();
 }
 
-void Line::draw()
+void Line::draw(Painter *painter)
 {
- qDebug()<<"Line Start - ="<<getStart().getX()<<","<<getStart().getY()<<endl;
+ painter->drawLine(this);
 }
 
 } // namespace

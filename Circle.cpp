@@ -105,7 +105,7 @@ void Circle::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Circle::draw()
+void Circle::draw(Painter *painter)
 {
 
 }

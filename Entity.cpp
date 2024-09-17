@@ -14,7 +14,7 @@
  */
 
 #include "Entity.h"
-
+#include <QDebug>
 namespace ru_tcl_dxf
 {
 
@@ -24,11 +24,12 @@ Entity::Entity ()
     elevation(0),
     thickness(0),
     color_number(0),
-
     line_type_name("BYLAYER"),
     layer_name(""),
     extrusion_direction()
+
 {
+      qDebug()<<"Constuctor Entity default";
 }
 
 Entity::~Entity ()
@@ -45,6 +46,7 @@ Entity::Entity (const Entity &obj)
     layer_name(obj.layer_name),
     extrusion_direction(obj.extrusion_direction)
 {
+    qDebug()<<"Constuctor Entity copy";
 }
 
 const Entity & Entity::operator = (const Entity &obj)
@@ -64,7 +66,7 @@ const Entity & Entity::operator = (const Entity &obj)
     return *this;
 }
 
-void Entity::draw()
+void Entity::draw(Painter *painter)
 {
 
 }

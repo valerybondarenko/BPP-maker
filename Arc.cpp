@@ -25,7 +25,9 @@ Arc::Arc ()
     radius(0),
     start_angle(0),
     end_angle(0)
+
 {
+
 }
 
 Arc::~Arc ()
@@ -121,9 +123,9 @@ void Arc::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Arc::draw()
+void Arc::draw(Painter *painter)
 {
-
+painter->drawArc(this);
 }
 
 } // namespace

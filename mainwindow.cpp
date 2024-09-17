@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include"painter.h"
 #include "Translator.h"
 #include "DxfObject.h"
 #include<QDebug>
@@ -13,8 +13,11 @@ MainWindow::MainWindow(QWidget *parent)
 using namespace ru_tcl_dxf;
     Translator tr;
     tr.readDXF("C://1.DXF");
-    tr.getEntities()->getItems().at(0)->draw();
-
+    Painter pntr;
+    items = tr.getEntities()->getItems();
+    for (unsigned long long i=0;i<items.size();i++) {
+        items.at(i)->draw(&pntr);
+    }
 
 
 

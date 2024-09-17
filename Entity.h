@@ -20,11 +20,12 @@
 
 #include "DxfObject.h"
 #include "Point3d.h"
+#include "painter.h"
 #include <QDebug>
 
 namespace ru_tcl_dxf
 {
-
+class Painter;
 /*
  * Класс Entity является базовым для всех
  * примитивов.
@@ -76,7 +77,7 @@ public:
     string getName() const;
     void setName(const string &value);
 public:
-    virtual void draw();
+    virtual void draw(Painter* painter);
 
 
 protected:
