@@ -4,6 +4,7 @@
 #include "Translator.h"
 #include "DxfObject.h"
 #include<QDebug>
+#include<QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,18 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 using namespace ru_tcl_dxf;
-    Translator tr;
-    tr.readDXF("C://1.DXF");
-    Painter pntr;
-    items = tr.getEntities()->getItems();
-    for (unsigned long long i=0;i<items.size();i++) {
-        items.at(i)->draw(&pntr);
-    }
-
-
-
-
-
 
 }
 
@@ -31,3 +20,22 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_actionOpen_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                      "/home",
+                                                      tr("AutoCAD (*.DXF)"));
+    if(fileName.isEmpty())
+        return;
+    trans.readDXF(fileName.toStdString());
+    Painter painter;
+    items = trans.getEntities()->getItems();
+    for (unsigned long long i=0;i<items.size();i++) {
+        items.at(i)->draw(&painter);
+    }
+}
+
+void MainWindow::on_actionQuit_triggered()
+{
+    close();
+}

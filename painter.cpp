@@ -18,7 +18,8 @@ void Painter::drawLine(ru_tcl_dxf::Entity *line)
 
 void Painter::drawArc(Entity *arc)
 {
-    qDebug()<<"Painter draw Arc";
+    Arc* ar = (Arc*)arc;
+    qDebug()<<"Painter draw Arc - center "<<ar->getCenter().getX()<<","<<ar->getCenter().getY()<<"R = "<<ar->getRadius();
 }
 
 void Painter::drawCircle(Entity *circle)

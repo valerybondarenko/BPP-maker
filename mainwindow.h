@@ -18,9 +18,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionOpen_triggered();
+
+    void on_actionQuit_triggered();
+
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui;   
     vector<Entity*> items;
+Translator trans;
 
 };
 #endif // MAINWINDOW_H
