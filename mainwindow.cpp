@@ -28,11 +28,9 @@ void MainWindow::on_actionOpen_triggered()
     if(fileName.isEmpty())
         return;
     trans.readDXF(fileName.toStdString());
-    Painter painter;
+    Painter painter(this);
     items = trans.getEntities()->getItems();
-    for (unsigned long long i=0;i<items.size();i++) {
-        items.at(i)->draw(&painter);
-    }
+    painter.setItems(&items);
 }
 
 void MainWindow::on_actionQuit_triggered()
