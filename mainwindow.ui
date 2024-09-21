@@ -15,8 +15,8 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="Painter" name="widget" native="true"/>
+    <item row="1" column="0">
+     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -51,14 +51,6 @@
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>Painter</class>
-   <extends>QWidget</extends>
-   <header>painter.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

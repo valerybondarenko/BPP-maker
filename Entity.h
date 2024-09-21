@@ -20,7 +20,7 @@
 
 #include "DxfObject.h"
 #include "Point3d.h"
-#include "painter.h"
+
 #include <QDebug>
 
 namespace ru_tcl_dxf

@@ -125,7 +125,7 @@ void Arc::readDXF (Tokenizer &tokenizer)
 
 void Arc::draw(Painter *painter)
 {
-painter->drawArc(this);
+
 }
 
 } // namespace

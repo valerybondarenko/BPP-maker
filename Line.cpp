@@ -119,7 +119,7 @@ void Line::readDXF (Tokenizer &tokenizer)
 
 void Line::draw(Painter *painter)
 {
- painter->drawLine(this);
+
 }
 
 } // namespace

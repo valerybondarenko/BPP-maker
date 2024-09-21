@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui opengl
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -59,8 +59,7 @@ SOURCES += \
     VportTable.cpp \
     biesseprogramm.cpp \
     main.cpp \
-    mainwindow.cpp \
-    painter.cpp
+    mainwindow.cpp
 
 HEADERS += \
     Arc.h \
@@ -106,7 +105,6 @@ HEADERS += \
     VportTable.h \
     biesseprogramm.h \
     mainwindow.h \
-    painter.h \
     tcl_dxf_defs.h
 
 FORMS += \
@@ -119,3 +117,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     BiesseBpp.pro.user
+

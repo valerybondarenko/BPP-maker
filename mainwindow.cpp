@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include"painter.h"
+
 #include "Translator.h"
 #include "DxfObject.h"
 #include<QDebug>
@@ -28,9 +28,8 @@ void MainWindow::on_actionOpen_triggered()
     if(fileName.isEmpty())
         return;
     trans.readDXF(fileName.toStdString());
-    Painter painter(this);
     items = trans.getEntities()->getItems();
-    painter.setItems(&items);
+
 }
 
 void MainWindow::on_actionQuit_triggered()
