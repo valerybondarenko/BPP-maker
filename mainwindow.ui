@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="0">
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="ScreenView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -51,6 +51,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ScreenView</class>
+   <extends>QGraphicsView</extends>
+   <header>screenview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

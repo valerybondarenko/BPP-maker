@@ -59,7 +59,8 @@ SOURCES += \
     VportTable.cpp \
     biesseprogramm.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    screenview.cpp
 
 HEADERS += \
     Arc.h \
@@ -105,6 +106,7 @@ HEADERS += \
     VportTable.h \
     biesseprogramm.h \
     mainwindow.h \
+    screenview.h \
     tcl_dxf_defs.h
 
 FORMS += \
