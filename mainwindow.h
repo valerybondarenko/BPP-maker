@@ -5,6 +5,7 @@
 #include "Translator.h"
 #include <vector>
 #include"Entity.h"
+#include"screenview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,13 +21,13 @@ public:
 
 private slots:
     void on_actionOpen_triggered();
-
     void on_actionQuit_triggered();
 
 private:
     Ui::MainWindow *ui;   
-    vector<Entity*> items;
+
 Translator trans;
+ScreenView* view;
 
 };
 #endif // MAINWINDOW_H

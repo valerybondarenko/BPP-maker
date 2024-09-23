@@ -5,6 +5,8 @@
 #include "DxfObject.h"
 #include<QDebug>
 #include<QFileDialog>
+#include "screenview.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,7 +30,9 @@ void MainWindow::on_actionOpen_triggered()
     if(fileName.isEmpty())
         return;
     trans.readDXF(fileName.toStdString());
-    items = trans.getEntities()->getItems();
+    view = new ScreenView(this);
+
+
 
 }
 

@@ -20,12 +20,12 @@
 
 #include "DxfObject.h"
 #include "Point3d.h"
-
+#include "screenview.h"
 #include <QDebug>
 
 namespace ru_tcl_dxf
 {
-class Painter;
+class ScreenView;
 /*
  * Класс Entity является базовым для всех
  * примитивов.
@@ -77,7 +77,7 @@ public:
     string getName() const;
     void setName(const string &value);
 public:
-    virtual void draw(Painter* painter);
+    virtual void draw(ScreenView* value);
 
 
 protected:
@@ -101,6 +101,7 @@ private:
     string  line_type_name;
     string  layer_name;
     Point3d extrusion_direction;
+
 
     // Константы
     // =========

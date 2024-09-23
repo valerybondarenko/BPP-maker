@@ -203,7 +203,7 @@ void Attrib::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Attrib::draw(Painter *painter)
+void Attrib::draw(ScreenView *painter)
 {
 
 }

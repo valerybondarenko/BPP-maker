@@ -123,7 +123,7 @@ void Arc::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Arc::draw(Painter *painter)
+void Arc::draw(ScreenView *painter)
 {
 
 }

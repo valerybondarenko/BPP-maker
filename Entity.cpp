@@ -66,7 +66,7 @@ const Entity & Entity::operator = (const Entity &obj)
     return *this;
 }
 
-void Entity::draw(Painter *painter)
+void Entity::draw(ScreenView *value)
 {
 
 }
@@ -119,6 +119,8 @@ bool Entity::readCommonPropertiesDXF (Tokenizer &tokenizer)
 
     return false;
 }
+
+
 
 
 

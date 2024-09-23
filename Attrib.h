@@ -212,7 +212,7 @@ private:
 
     // Entity interface
 public:
-    void draw(Painter *painter)override;
+    void draw(ScreenView *painter)override;
 };
 
 

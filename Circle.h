@@ -75,7 +75,7 @@ private:
 
     // Entity interface
 public:
-    void draw(Painter *painter);
+    void draw(ScreenView *painter);
 };
 
 

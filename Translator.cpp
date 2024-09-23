@@ -25,6 +25,8 @@ Entities *Translator::getEntities() const
     return entities;
 }
 
+
+
 Translator::Translator ()
     :
       header(new Header()),

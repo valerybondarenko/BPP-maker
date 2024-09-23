@@ -19,7 +19,7 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-
+#include "screenview.h"
 #include "Tokenizer.h"
 #include "Header.h"
 #include "Tables.h"
@@ -59,6 +59,7 @@ private:
     Blocks         *blocks;
     Entities       *entities;
     vector<string> errors;
+
 
 public:
 
@@ -103,6 +104,8 @@ public:
     void readDXF (const string &fileName);
 
     Entities *getEntities() const;
+
+
 
 private:
 

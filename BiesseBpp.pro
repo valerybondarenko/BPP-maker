@@ -58,6 +58,7 @@ SOURCES += \
     Vport.cpp \
     VportTable.cpp \
     biesseprogramm.cpp \
+    linegraphicsitem.cpp \
     main.cpp \
     mainwindow.cpp \
     screenview.cpp
@@ -105,6 +106,7 @@ HEADERS += \
     Vport.h \
     VportTable.h \
     biesseprogramm.h \
+    linegraphicsitem.h \
     mainwindow.h \
     screenview.h \
     tcl_dxf_defs.h

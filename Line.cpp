@@ -117,7 +117,7 @@ void Line::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Line::draw(Painter *painter)
+void Line::draw(ScreenView *value)
 {
 
 }

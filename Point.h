@@ -86,7 +86,7 @@ private:
 
     // Entity interface
 public:
-    void draw();
+    void draw(ScreenView* value);
 };
 
 
