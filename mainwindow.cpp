@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include "Translator.h"
 #include "DxfObject.h"
 #include<QDebug>
 #include<QFileDialog>
-#include "screenview.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,8 +12,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-using namespace ru_tcl_dxf;
 
+scene = new QGraphicsScene(this);
+using namespace ru_tcl_dxf;
+panelRect.setRect(0.0,0.0,280,260);
+panelRect.setBrush(Qt::gray);
+QPen redPen(Qt::red);
+panelRect.setPen(redPen);
+panelRect.setFlag(QGraphicsItem::ItemIsMovable);
+
+scene->addItem(&panelRect);
+ui->graphicsView->setScene(scene);
 }
 
 MainWindow::~MainWindow()
@@ -30,7 +38,7 @@ void MainWindow::on_actionOpen_triggered()
     if(fileName.isEmpty())
         return;
     trans.readDXF(fileName.toStdString());
-    view = new ScreenView(this);
+
 
 
 

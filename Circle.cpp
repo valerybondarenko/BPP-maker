@@ -105,7 +105,7 @@ void Circle::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Circle::draw(ScreenView *painter)
+void Circle::draw(QGraphicsScene *painter)
 {
 
 }

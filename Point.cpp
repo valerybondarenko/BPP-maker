@@ -107,7 +107,7 @@ void Point::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Point::draw(ScreenView *value)
+void Point::draw(QGraphicsScene *value)
 {
 
 }

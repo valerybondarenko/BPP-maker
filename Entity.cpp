@@ -66,7 +66,7 @@ const Entity & Entity::operator = (const Entity &obj)
     return *this;
 }
 
-void Entity::draw(ScreenView *value)
+void Entity::draw(QGraphicsScene *value)
 {
 
 }

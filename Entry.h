@@ -17,7 +17,6 @@
 #define RU_TCL_DXF_Entry_H
 
 #include <string>
-
 #include "DxfObject.h"
 
 namespace ru_tcl_dxf

@@ -60,8 +60,7 @@ SOURCES += \
     biesseprogramm.cpp \
     linegraphicsitem.cpp \
     main.cpp \
-    mainwindow.cpp \
-    screenview.cpp
+    mainwindow.cpp
 
 HEADERS += \
     Arc.h \
@@ -108,7 +107,6 @@ HEADERS += \
     biesseprogramm.h \
     linegraphicsitem.h \
     mainwindow.h \
-    screenview.h \
     tcl_dxf_defs.h
 
 FORMS += \

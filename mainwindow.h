@@ -2,15 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Translator.h"
 #include <vector>
+#include "Translator.h"
 #include"Entity.h"
-#include"screenview.h"
+#include <QGraphicsScene>
+#include <QGraphicsItem>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-using namespace ru_tcl_dxf;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -26,8 +28,8 @@ private slots:
 private:
     Ui::MainWindow *ui;   
 
-Translator trans;
-ScreenView* view;
-
+ru_tcl_dxf::Translator trans;
+QGraphicsScene *scene;
+QGraphicsRectItem panelRect;
 };
 #endif // MAINWINDOW_H

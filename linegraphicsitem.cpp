@@ -5,4 +5,9 @@ LineGraphicsItem::LineGraphicsItem(QGraphicsItem *parent) : QGraphicsItem(parent
 {
 
 }
+
+QRectF LineGraphicsItem::boundingRect() const
+{
+   // return
+}
 }

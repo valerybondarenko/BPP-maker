@@ -211,7 +211,7 @@ void Attdef::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Attdef::draw(ScreenView *painter)
+void Attdef::draw(QGraphicsScene *painter)
 {
 
 }

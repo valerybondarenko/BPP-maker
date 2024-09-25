@@ -212,7 +212,7 @@ private:
 
     // Entity interface
 public:
-    void draw(ScreenView *painter)override;
+    void draw(QGraphicsScene *painter)override;
 };
 
 

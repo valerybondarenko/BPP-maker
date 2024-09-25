@@ -17,15 +17,14 @@
 #define RU_TCL_DXF_Entity_H
 
 #include <string>
-
 #include "DxfObject.h"
 #include "Point3d.h"
-#include "screenview.h"
+#include <QGraphicsScene>
 #include <QDebug>
 
 namespace ru_tcl_dxf
 {
-class ScreenView;
+class QGraphicsScene;
 /*
  * Класс Entity является базовым для всех
  * примитивов.
@@ -77,7 +76,7 @@ public:
     string getName() const;
     void setName(const string &value);
 public:
-    virtual void draw(ScreenView* value);
+    virtual void draw(QGraphicsScene* value);
 
 
 protected:

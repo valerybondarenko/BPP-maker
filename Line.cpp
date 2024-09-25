@@ -117,7 +117,7 @@ void Line::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Line::draw(ScreenView *value)
+void Line::draw(QGraphicsScene *value)
 {
 
 }

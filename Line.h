@@ -77,7 +77,7 @@ private:
 
     // Entity interface
     public:
-    void draw(ScreenView *value);
+    void draw(QGraphicsScene *value);
 };
 
 
