@@ -7,7 +7,7 @@
 #include"Entity.h"
 #include <QGraphicsScene>
 #include <QGraphicsItem>
-
+#include "linegraphicsitem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,5 +31,6 @@ private:
 ru_tcl_dxf::Translator trans;
 QGraphicsScene *scene;
 QGraphicsRectItem panelRect;
+LineGraphicsItem *lineItem;
 };
 #endif // MAINWINDOW_H

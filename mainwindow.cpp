@@ -20,7 +20,11 @@ panelRect.setBrush(Qt::gray);
 QPen redPen(Qt::red);
 panelRect.setPen(redPen);
 panelRect.setFlag(QGraphicsItem::ItemIsMovable);
-
+lineItem = new LineGraphicsItem();
+lineItem->setL_Start(QPointF(5.0,5.0));
+lineItem->setL_End(QPointF(45.0,45.0));
+lineItem->setParentItem(&panelRect);
+scene->addItem(lineItem);
 scene->addItem(&panelRect);
 ui->graphicsView->setScene(scene);
 }
@@ -28,6 +32,7 @@ ui->graphicsView->setScene(scene);
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete lineItem;
 }
 
 void MainWindow::on_actionOpen_triggered()

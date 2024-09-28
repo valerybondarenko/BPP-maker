@@ -6,6 +6,16 @@ l_Start = QPointF(0.0,0.0);
 l_End = QPointF(0.0,0.0);
 }
 
+void LineGraphicsItem::setL_End(const QPointF &value)
+{
+    l_End = value;
+}
+
+void LineGraphicsItem::setL_Start(const QPointF &value)
+{
+    l_Start = value;
+}
+
 QPointF LineGraphicsItem::getL_End() const
 {
     return l_End;
