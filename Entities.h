@@ -17,7 +17,7 @@
 #define RU_TCL_DXF_Entities_H
 
 #include <vector>
-
+#include <QGraphicsItem>
 #include "Section.h"
 #include "Entity.h"
 
@@ -51,12 +51,16 @@ public:
      */
     void readDXF (Tokenizer &tokenizer);
 
+
+    void setParentGraphicsItem(QGraphicsItem *value);
+
 private:
 
     // Атрибуты
     // ========
 
     vector<Entity *> items;
+    QGraphicsItem *parentGraphicsItem;
 };
 
 

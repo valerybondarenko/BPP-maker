@@ -14,7 +14,6 @@
  */
 
 #include "Entities.h"
-
 #include "Arc.h"
 #include "Attdef.h"
 #include "Attrib.h"
@@ -30,6 +29,9 @@
 #include "Solid.h"
 #include "Text.h"
 #include "Trace.h"
+//*Qt based functions
+#include "linegraphicsitem.h"
+
 
 namespace ru_tcl_dxf
 {
@@ -76,6 +78,7 @@ void Entities::readDXF (Tokenizer &tokenizer)
         if (tokenizer.compareCommand(Tokenizer::DXF_KEY_ARC) == true)
         {
             Arc *obj = new Arc();
+
             obj->readDXF(tokenizer);
             items.insert(items.end(), obj);
             continue;
@@ -133,6 +136,16 @@ void Entities::readDXF (Tokenizer &tokenizer)
         {
             Line *obj = new Line();
             obj->readDXF(tokenizer);
+            LineGraphicsItem *gobj;
+            gobj=new LineGraphicsItem;
+            float _xst = obj->getStart().getX();
+            float _yst = obj->getStart().getY();
+            float _xen = obj->getEnd().getX();
+            float _yen = obj->getEnd().getY();
+            gobj->setL_Start(QPointF(_xst,_yst));
+            gobj->setL_End(QPointF(_xen,_yen));
+            gobj->setParentItem(parentGraphicsItem);
+            gobj->setFlag(QGraphicsItem::ItemIsSelectable);
             items.insert(items.end(), obj);
             continue;
         }
@@ -193,6 +206,11 @@ void Entities::readDXF (Tokenizer &tokenizer)
             continue;
         }
     }
+}
+
+void Entities::setParentGraphicsItem(QGraphicsItem *value)
+{
+    parentGraphicsItem = value;
 }
 
 } // namespace

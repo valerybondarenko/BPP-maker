@@ -19,7 +19,7 @@
 #include <string>
 #include "DxfObject.h"
 #include "Point3d.h"
-#include <QGraphicsScene>
+#include <QGraphicsItem>
 #include <QDebug>
 
 namespace ru_tcl_dxf
