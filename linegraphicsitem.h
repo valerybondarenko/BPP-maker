@@ -5,6 +5,7 @@
 #include "QPointF"
 #include<QObject>
 #include <QPainter>
+#include <QPen>
 
 
 
@@ -12,7 +13,7 @@ class LineGraphicsItem : public QGraphicsItem
 {
 
 public:
-    LineGraphicsItem(QGraphicsItem *parent = nullptr);
+    LineGraphicsItem(QGraphicsItem* parent=nullptr);
 
 
 private:

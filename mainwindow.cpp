@@ -21,10 +21,11 @@ QPen redPen(Qt::red);
 panelRect.setPen(redPen);
 panelRect.setFlag(QGraphicsItem::ItemIsMovable);
 lineItem = new LineGraphicsItem();
-lineItem->setL_Start(QPointF(5.0,5.0));
+lineItem->setL_Start(QPointF(15.0,15.0));
 lineItem->setL_End(QPointF(45.0,45.0));
+lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
 lineItem->setParentItem(&panelRect);
-scene->addItem(lineItem);
+//scene->addItem(lineItem);
 scene->addItem(&panelRect);
 ui->graphicsView->setScene(scene);
 }

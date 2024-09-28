@@ -28,7 +28,13 @@ QRectF LineGraphicsItem::boundingRect() const
 
 void LineGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-
+    QPen redPen(Qt::red);
+    QPen blackPen(Qt::black);
+    if (isSelected()) {
+        painter->setPen(redPen);
+    } else {
+        painter->setPen(blackPen);
+    }
     painter->drawLine(l_Start,l_End);
 }
 
