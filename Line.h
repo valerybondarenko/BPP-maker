@@ -75,9 +75,8 @@ private:
         END_Z   = 31
     };
 
-    // Entity interface
-    public:
-    void draw(QGraphicsScene *value);
+
+
 };
 
 

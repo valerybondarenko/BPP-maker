@@ -113,14 +113,11 @@ void Line::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-
+    elementType = LINE;
     tokenizer.gotoBack();
 }
 
-void Line::draw(QGraphicsScene *value)
-{
 
-}
 
 } // namespace
 

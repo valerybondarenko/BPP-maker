@@ -144,10 +144,6 @@ private:
         COLUMN_SPACING    = 44,
         ROW_SPACING       = 45
     };
-
-    // Entity interface
-public:
-    void draw();
 };
 
 

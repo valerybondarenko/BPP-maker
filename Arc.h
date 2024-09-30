@@ -87,9 +87,8 @@ private:
         END_ANGLE   = 51
     };
 
-    // Entity interface
-public:
-    void draw(QGraphicsScene *value) override;
+
+
 };
 
 

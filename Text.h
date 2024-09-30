@@ -172,10 +172,6 @@ private:
         ALIGNMENT_Y        = 21,
         ALIGNMENT_Z        = 31
     };
-
-    // Entity interface
-public:
-    void draw();
 };
 
 

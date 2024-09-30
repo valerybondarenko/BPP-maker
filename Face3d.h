@@ -114,10 +114,6 @@ private:
         FOURTH_CORNER_Z = 33,
         FLAGS           = 70
     };
-
-    // Entity interface
-public:
-    void draw();
 };
 
 

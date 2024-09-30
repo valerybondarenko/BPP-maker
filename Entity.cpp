@@ -29,7 +29,7 @@ Entity::Entity ()
     extrusion_direction()
 
 {
-      qDebug()<<"Constuctor Entity default";
+
 }
 
 Entity::~Entity ()
@@ -46,7 +46,7 @@ Entity::Entity (const Entity &obj)
     layer_name(obj.layer_name),
     extrusion_direction(obj.extrusion_direction)
 {
-    qDebug()<<"Constuctor Entity copy";
+
 }
 
 const Entity & Entity::operator = (const Entity &obj)
@@ -66,10 +66,6 @@ const Entity & Entity::operator = (const Entity &obj)
     return *this;
 }
 
-void Entity::draw(QGraphicsScene *value)
-{
-
-}
 
 bool Entity::readCommonPropertiesDXF (Tokenizer &tokenizer)
 {

@@ -29,8 +29,12 @@ private:
     Ui::MainWindow *ui;   
 
 ru_tcl_dxf::Translator trans;
+std::vector <ru_tcl_dxf::Entity*> itemList;
+
 QGraphicsScene *scene;
-QGraphicsRectItem panelRect;
+QGraphicsRectItem *panelRect;
 LineGraphicsItem *lineItem;
+
+
 };
 #endif // MAINWINDOW_H

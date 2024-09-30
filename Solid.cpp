@@ -151,10 +151,5 @@ void Solid::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Solid::draw()
-{
-
-}
-
 } // namespace
 

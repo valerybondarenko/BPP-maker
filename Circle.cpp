@@ -101,13 +101,7 @@ void Circle::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-
     tokenizer.gotoBack();
-}
-
-void Circle::draw(QGraphicsScene *painter)
-{
-
 }
 
 } // namespace

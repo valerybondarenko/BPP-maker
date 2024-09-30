@@ -102,10 +102,6 @@ private:
         X_SCALE         = 41,
         OBLIQUING_ANGLE = 51
     };
-
-    // Entity interface
-public:
-    void draw();
 };
 
 

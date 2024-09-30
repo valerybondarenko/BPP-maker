@@ -107,10 +107,6 @@ void Point::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Point::draw(QGraphicsScene *value)
-{
-
-}
 
 } // namespace
 

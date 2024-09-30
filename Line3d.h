@@ -75,9 +75,7 @@ private:
         END_Z   = 31
     };
 
-    // Entity interface
-public:
-    void draw();
+
 };
 
 inline const Point3d & Line3d::getEnd () const

@@ -210,9 +210,7 @@ private:
         DIRECTION     = 51
     };
 
-    // Entity interface
-public:
-    void draw();
+
 };
 
 inline double Dimension::getAngle () const

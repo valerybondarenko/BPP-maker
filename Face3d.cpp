@@ -159,10 +159,7 @@ void Face3d::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Face3d::draw()
-{
 
-}
 
 } // namespace
 

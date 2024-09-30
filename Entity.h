@@ -19,12 +19,10 @@
 #include <string>
 #include "DxfObject.h"
 #include "Point3d.h"
-#include <QGraphicsItem>
 #include <QDebug>
 
 namespace ru_tcl_dxf
 {
-class QGraphicsScene;
 /*
  * Класс Entity является базовым для всех
  * примитивов.
@@ -75,9 +73,6 @@ public:
 
     string getName() const;
     void setName(const string &value);
-public:
-    virtual void draw(QGraphicsScene* value);
-
 
 protected:
 
@@ -116,6 +111,16 @@ private:
         EXTRUSION_DIRECTION_Y = 220,
         EXTRUSION_DIRECTION_Z = 230
     };
+public:
+    enum ElementType
+    {
+        POINT,
+        LINE,
+        ARC,
+        CIRCLE
+    };
+
+    ElementType elementType;
 };
 
 inline int Entity::getColorNumber () const

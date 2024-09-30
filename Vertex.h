@@ -127,10 +127,6 @@ private:
         FLAGS             = 70,
         TANGENT_DIRECTION = 50
     };
-
-    // Entity interface
-public:
-    void draw();
 };
 
 

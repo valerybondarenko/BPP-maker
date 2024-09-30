@@ -31,6 +31,7 @@
 #include "Trace.h"
 //*Qt based functions
 #include "linegraphicsitem.h"
+#include <QDebug>
 
 
 namespace ru_tcl_dxf
@@ -136,16 +137,6 @@ void Entities::readDXF (Tokenizer &tokenizer)
         {
             Line *obj = new Line();
             obj->readDXF(tokenizer);
-            LineGraphicsItem *gobj;
-            gobj=new LineGraphicsItem;
-            float _xst = obj->getStart().getX();
-            float _yst = obj->getStart().getY();
-            float _xen = obj->getEnd().getX();
-            float _yen = obj->getEnd().getY();
-            gobj->setL_Start(QPointF(_xst,_yst));
-            gobj->setL_End(QPointF(_xen,_yen));
-            gobj->setParentItem(parentGraphicsItem);
-            gobj->setFlag(QGraphicsItem::ItemIsSelectable);
             items.insert(items.end(), obj);
             continue;
         }
@@ -208,10 +199,6 @@ void Entities::readDXF (Tokenizer &tokenizer)
     }
 }
 
-void Entities::setParentGraphicsItem(QGraphicsItem *value)
-{
-    parentGraphicsItem = value;
-}
 
 } // namespace
 

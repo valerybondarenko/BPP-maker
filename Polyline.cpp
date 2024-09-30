@@ -173,10 +173,6 @@ void Polyline::readVerticesDXF (Tokenizer &tokenizer)
     }
 }
 
-void Polyline::draw()
-{
-
-}
 
 } // namespace
 

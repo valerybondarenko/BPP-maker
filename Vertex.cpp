@@ -137,10 +137,5 @@ void Vertex::readDXF (Tokenizer &tokenizer)
     tokenizer.gotoBack();
 }
 
-void Vertex::draw()
-{
-
-}
-
 } // namespace
 

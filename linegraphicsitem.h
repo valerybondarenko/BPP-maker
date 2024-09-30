@@ -15,7 +15,6 @@ class LineGraphicsItem : public QGraphicsItem
 public:
     LineGraphicsItem(QGraphicsItem* parent=nullptr);
 
-
 private:
 QPointF l_Start;
 QPointF l_End;

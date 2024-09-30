@@ -72,10 +72,6 @@ private:
         CENTER_Z    = 30,
         RADIUS      = 40
     };
-
-    // Entity interface
-public:
-    void draw(QGraphicsScene *painter);
 };
 
 

@@ -4,6 +4,7 @@
 #include "DxfObject.h"
 #include<QDebug>
 #include<QFileDialog>
+#include"Line.h"
 
 
 
@@ -15,19 +16,13 @@ MainWindow::MainWindow(QWidget *parent)
 
 scene = new QGraphicsScene(this);
 using namespace ru_tcl_dxf;
-panelRect.setRect(0.0,0.0,680,660);
-panelRect.setBrush(Qt::gray);
-QPen redPen(Qt::red);
-panelRect.setPen(redPen);
-panelRect.setFlag(QGraphicsItem::ItemIsMovable);
-//lineItem = new LineGraphicsItem();
-//lineItem->setL_Start(QPointF(15.0,15.0));
-//lineItem->setL_End(QPointF(45.0,45.0));
-//lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
-//lineItem->setParentItem(&panelRect);
-//scene->addItem(lineItem);
+panelRect = new QGraphicsRectItem;
+panelRect->setRect(0.0,0.0,680,660);
+panelRect->setBrush(Qt::gray);
+panelRect->setPen(QPen(Qt::red));
+panelRect->setFlag(QGraphicsItem::ItemIsMovable);
 
-scene->addItem(&panelRect);
+scene->addItem(panelRect);
 ui->graphicsView->setScene(scene);
 }
 
@@ -44,8 +39,19 @@ void MainWindow::on_actionOpen_triggered()
                                                       tr("AutoCAD (*.DXF)"));
     if(fileName.isEmpty())
         return;
-    trans.getEntities()->setParentGraphicsItem(&panelRect);
     trans.readDXF(fileName.toStdString());
+    itemList = trans.getEntities()->getItems();
+
+    for (unsigned long long i=0;i<itemList.size();i++) {
+        if(itemList.at(i)->elementType==ru_tcl_dxf::Entity::LINE){
+           lineItem = new LineGraphicsItem();
+           ru_tcl_dxf::Line *dxf_line = static_cast<ru_tcl_dxf::Line *>(itemList.at(i));
+           lineItem->setL_Start(QPointF(dxf_line->getStart().getX(),dxf_line->getStart().getY()));
+           lineItem->setL_End(QPointF(dxf_line->getEnd().getX(),dxf_line->getEnd().getY()));
+           lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
+           lineItem->setParentItem(panelRect);
+        }
+    }
 }
 
 void MainWindow::on_actionQuit_triggered()
