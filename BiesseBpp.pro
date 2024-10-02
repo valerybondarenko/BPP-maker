@@ -57,6 +57,7 @@ SOURCES += \
     ViewTable.cpp \
     Vport.cpp \
     VportTable.cpp \
+    arcgraphicsitem.cpp \
     biesseprogramm.cpp \
     linegraphicsitem.cpp \
     main.cpp \
@@ -104,6 +105,7 @@ HEADERS += \
     ViewTable.h \
     Vport.h \
     VportTable.h \
+    arcgraphicsitem.h \
     biesseprogramm.h \
     linegraphicsitem.h \
     mainwindow.h \

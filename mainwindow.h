@@ -8,6 +8,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 #include "linegraphicsitem.h"
+#include "arcgraphicsitem.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,7 +36,7 @@ std::vector <ru_tcl_dxf::Entity*> itemList;
 QGraphicsScene *scene;
 QGraphicsRectItem *panelRect;
 LineGraphicsItem *lineItem;
-
+ArcGraphicsItem *arcItem;
 
 };
 #endif // MAINWINDOW_H

@@ -36,6 +36,7 @@ void LineGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
         painter->setPen(blackPen);
     }
     painter->drawLine(l_Start,l_End);
+   // painter->drawArc()
 }
 
 QPointF LineGraphicsItem::getL_Start() const

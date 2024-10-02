@@ -5,6 +5,8 @@
 #include<QDebug>
 #include<QFileDialog>
 #include"Line.h"
+#include "Arc.h"
+
 
 
 
@@ -50,6 +52,14 @@ void MainWindow::on_actionOpen_triggered()
            lineItem->setL_End(QPointF(dxf_line->getEnd().getX(),dxf_line->getEnd().getY()));
            lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
            lineItem->setParentItem(panelRect);
+        } else if (itemList.at(i)->elementType==ru_tcl_dxf::Entity::ARC){
+            ru_tcl_dxf::Arc *dxf_arc = static_cast<ru_tcl_dxf::Arc *>(itemList.at(i));
+            QPointF arcCenter(dxf_arc->getCenter().getX(),dxf_arc->getCenter().getY());
+            float arcStartAngle = dxf_arc->getStartAngle();
+            float arcEndAngle = dxf_arc->getEndAngle();
+            float arcRadius = dxf_arc->getRadius();
+           arcItem  = new ArcGraphicsItem(nullptr,arcCenter,arcStartAngle,arcEndAngle,arcRadius);
+           arcItem->setParentItem(panelRect);
         }
     }
 }

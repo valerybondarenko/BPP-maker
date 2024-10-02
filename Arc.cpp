@@ -119,7 +119,7 @@ void Arc::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-
+    elementType = ARC;
     tokenizer.gotoBack();
 }
 
