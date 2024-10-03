@@ -40,5 +40,5 @@ QRectF ArcGraphicsItem::boundingRect() const
 
 void ArcGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawArc(boundingRect(),startAngle*16,arcAngle*16);
+    painter->drawArc(boundingRect(),startAngle*16,-arcAngle*16);
 }

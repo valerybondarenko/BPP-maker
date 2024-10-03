@@ -30,6 +30,11 @@ panelRect->setTransform(transformation);
 panelDialog->init(800.0,500.0,18.0);
 panelDialog->exec();
 scene->addItem(panelRect);
+arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),270.0,00.0,80);
+arcItem->setParentItem(panelRect);
+
+
+
 ui->graphicsView->setScene(scene);
 }
 
