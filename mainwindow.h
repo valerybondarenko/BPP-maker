@@ -9,6 +9,7 @@
 #include <QGraphicsItem>
 #include "linegraphicsitem.h"
 #include "arcgraphicsitem.h"
+#include "paneldialog.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -37,6 +38,6 @@ QGraphicsScene *scene;
 QGraphicsRectItem *panelRect;
 LineGraphicsItem *lineItem;
 ArcGraphicsItem *arcItem;
-
+PanelDialog *panelDialog;
 };
 #endif // MAINWINDOW_H

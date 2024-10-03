@@ -10,12 +10,16 @@
 
 
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+panelDialog = new PanelDialog(this);
+panelDialog->init(800.0,500.0,18.0);
+panelDialog->exec();
 scene = new QGraphicsScene(this);
 using namespace ru_tcl_dxf;
 panelRect = new QGraphicsRectItem;
@@ -31,7 +35,7 @@ ui->graphicsView->setScene(scene);
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete lineItem;
+    delete panelRect;
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -59,6 +63,7 @@ void MainWindow::on_actionOpen_triggered()
             float arcEndAngle = dxf_arc->getEndAngle();
             float arcRadius = dxf_arc->getRadius();
            arcItem  = new ArcGraphicsItem(nullptr,arcCenter,arcStartAngle,arcEndAngle,arcRadius);
+           arcItem->setFlag(QGraphicsItem::ItemIsSelectable);
            arcItem->setParentItem(panelRect);
         }
     }

@@ -61,7 +61,8 @@ SOURCES += \
     biesseprogramm.cpp \
     linegraphicsitem.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    paneldialog.cpp
 
 HEADERS += \
     Arc.h \
@@ -109,10 +110,12 @@ HEADERS += \
     biesseprogramm.h \
     linegraphicsitem.h \
     mainwindow.h \
+    paneldialog.h \
     tcl_dxf_defs.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    paneldialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
