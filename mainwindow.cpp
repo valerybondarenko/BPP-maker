@@ -8,26 +8,27 @@
 #include "Arc.h"
 
 
-
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-panelDialog = new PanelDialog(this);
-panelDialog->init(800.0,500.0,18.0);
-panelDialog->exec();
+
 scene = new QGraphicsScene(this);
 using namespace ru_tcl_dxf;
 panelRect = new QGraphicsRectItem;
+panelDialog = new PanelDialog(this);
+connect(panelDialog,SIGNAL(confirm(float,float,float)),this,SLOT(panelData(float,float,float)));
 panelRect->setRect(0.0,0.0,680,660);
 panelRect->setBrush(Qt::gray);
 panelRect->setPen(QPen(Qt::red));
 panelRect->setFlag(QGraphicsItem::ItemIsMovable);
-
+transformation.setMatrix(1,0,0,0,-1,0,0,0,1);
+transformation.translate(0.0,panelRect->rect().height());
+panelRect->setTransform(transformation);
+panelDialog->init(800.0,500.0,18.0);
+panelDialog->exec();
 scene->addItem(panelRect);
 ui->graphicsView->setScene(scene);
 }
@@ -47,7 +48,6 @@ void MainWindow::on_actionOpen_triggered()
         return;
     trans.readDXF(fileName.toStdString());
     itemList = trans.getEntities()->getItems();
-
     for (unsigned long long i=0;i<itemList.size();i++) {
         if(itemList.at(i)->elementType==ru_tcl_dxf::Entity::LINE){
            lineItem = new LineGraphicsItem();
@@ -72,4 +72,9 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::on_actionQuit_triggered()
 {
     close();
+}
+
+void MainWindow::panelData(float lpx, float lpy, float lpz)
+{
+    panelRect->setRect(0.0,0.0,lpx,lpy);
 }

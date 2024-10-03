@@ -27,6 +27,7 @@ public:
 private slots:
     void on_actionOpen_triggered();
     void on_actionQuit_triggered();
+    void panelData(float lpx,float lpy,float lpz);
 
 private:
     Ui::MainWindow *ui;   
@@ -39,5 +40,6 @@ QGraphicsRectItem *panelRect;
 LineGraphicsItem *lineItem;
 ArcGraphicsItem *arcItem;
 PanelDialog *panelDialog;
+QTransform transformation;
 };
 #endif // MAINWINDOW_H

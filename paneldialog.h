@@ -17,8 +17,11 @@ public:
     ~PanelDialog();
     void init(float lpx,float lpy, float lpz);
 signals:
-void confirm();
+void confirm(float,float,float);
 
+
+private slots:
+void on_buttonBox_accepted();
 
 private:
     Ui::PanelDialog *ui;

@@ -23,6 +23,7 @@ QPointF LineGraphicsItem::getL_End() const
 
 QRectF LineGraphicsItem::boundingRect() const
 {
+
     return QRectF(l_Start,l_End);
 }
 

@@ -17,7 +17,7 @@ ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent, QPointF center, float st
         arcAngle =  endAngle - startAngle;
     } else
     {
-        arcAngle =  -360+(startAngle-endAngle) ;
+        arcAngle = startAngle - endAngle;
     }
 
 }
