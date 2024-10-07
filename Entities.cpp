@@ -79,7 +79,6 @@ void Entities::readDXF (Tokenizer &tokenizer)
         if (tokenizer.compareCommand(Tokenizer::DXF_KEY_ARC) == true)
         {
             Arc *obj = new Arc();
-
             obj->readDXF(tokenizer);
             items.insert(items.end(), obj);
             continue;

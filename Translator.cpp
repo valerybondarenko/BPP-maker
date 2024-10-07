@@ -31,8 +31,8 @@ Translator::Translator ()
     :
       header(new Header()),
       tables(new Tables()),
-    blocks(new Blocks()),
-    entities(new Entities())
+      blocks(new Blocks()),
+      entities(new Entities())
 {
 }
 
@@ -77,7 +77,6 @@ void Translator::readDXF (const string &fileName)
     tables   = new Tables();
     blocks   = new Blocks();
     entities = new Entities();
-
     ifstream  is(fileName.c_str());
     Tokenizer tokenizer(&is);
 

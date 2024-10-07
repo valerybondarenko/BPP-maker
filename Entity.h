@@ -117,7 +117,8 @@ public:
         POINT,
         LINE,
         ARC,
-        CIRCLE
+        CIRCLE,
+        POLYLINE
     };
 
     ElementType elementType;

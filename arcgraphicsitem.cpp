@@ -8,6 +8,7 @@ ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent)
 
 ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent, QPointF center, float startA, float endA, float radiusR)
 {
+    setParentItem(parent);
     centerPoint = center;
     startAngle = normalizeAngle(startA);
     endAngle = normalizeAngle(endA);
@@ -39,8 +40,8 @@ float ArcGraphicsItem::normalizeAngle(float value)
 QRectF ArcGraphicsItem::boundingRect() const
 {
     float dy = parentItem()->boundingRect().height();
-    return QRectF(QPointF(centerPoint.x()+radius,dy - centerPoint.y()+radius),
-                  QPointF(centerPoint.x()-radius,dy - centerPoint.y()-radius));
+    return QRectF(QPointF(centerPoint.x()+radius+1,dy - centerPoint.y()+radius+1),
+                  QPointF(centerPoint.x()-radius-1,dy - centerPoint.y()-radius+1));
 }
 
 void ArcGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

@@ -101,6 +101,7 @@ void Circle::readDXF (Tokenizer &tokenizer)
             }
         }
     }
+    elementType = CIRCLE;
     tokenizer.gotoBack();
 }
 

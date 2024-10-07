@@ -59,6 +59,7 @@ SOURCES += \
     VportTable.cpp \
     arcgraphicsitem.cpp \
     biesseprogramm.cpp \
+    circlegraphicsitem.cpp \
     linegraphicsitem.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -108,6 +109,7 @@ HEADERS += \
     VportTable.h \
     arcgraphicsitem.h \
     biesseprogramm.h \
+    circlegraphicsitem.h \
     linegraphicsitem.h \
     mainwindow.h \
     paneldialog.h \

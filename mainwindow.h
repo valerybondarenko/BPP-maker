@@ -9,6 +9,7 @@
 #include <QGraphicsItem>
 #include "linegraphicsitem.h"
 #include "arcgraphicsitem.h"
+#include "circlegraphicsitem.h"
 #include "paneldialog.h"
 
 
@@ -39,7 +40,8 @@ QGraphicsScene *scene;
 QGraphicsRectItem *panelRect;
 LineGraphicsItem *lineItem;
 ArcGraphicsItem *arcItem;
+CircleGraphicsItem *circleItem;
 PanelDialog *panelDialog;
-QTransform transformation;
+
 };
 #endif // MAINWINDOW_H
