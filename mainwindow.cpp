@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "Translator.h"
 #include "DxfObject.h"
+#include "Entity.h"
 #include<QDebug>
 #include<QFileDialog>
 #include"Line.h"
@@ -29,8 +30,8 @@ panelRect->setFlag(QGraphicsItem::ItemIsMovable);
 panelDialog->init(800.0,500.0,18.0);
 panelDialog->exec();
 scene->addItem(panelRect);
-arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),0.0,360.0,8);
-arcItem->setParentItem(panelRect);
+//arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),0.0,360.0,8);
+//arcItem->setParentItem(panelRect);
 
 
 
@@ -56,7 +57,8 @@ void MainWindow::on_actionOpen_triggered()
 
     for (unsigned long long i=0;i<itemList.size();i++)
     {
-        switch (itemList.at(i)->elementType)
+
+        switch (itemList.at(i)->elementType)        
         {
 
         case  ru_tcl_dxf::Entity::LINE:
@@ -78,7 +80,6 @@ void MainWindow::on_actionOpen_triggered()
             float arcRadius = dxf_arc->getRadius();
             arcItem  = new ArcGraphicsItem(panelRect,arcCenter,arcStartAngle,arcEndAngle,arcRadius);
             arcItem->setFlag(QGraphicsItem::ItemIsSelectable);
-//            arcItem->setParentItem(panelRect);
             break;
         }
         case ru_tcl_dxf::Entity::CIRCLE:

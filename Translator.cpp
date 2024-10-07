@@ -94,6 +94,7 @@ void Translator::readDXF (const string &fileName)
         }
 
         if (tokenizer.compareCommand(Tokenizer::DXF_KEY_EOF) == true)
+
             break;
 
         tokenizer.badInstruction();

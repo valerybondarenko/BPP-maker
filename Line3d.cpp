@@ -113,6 +113,7 @@ void Line3d::readDXF (Tokenizer &tokenizer)
     }
 
     tokenizer.gotoBack();
+
 }
 
 

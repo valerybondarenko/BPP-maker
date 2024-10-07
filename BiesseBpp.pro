@@ -60,6 +60,7 @@ SOURCES += \
     arcgraphicsitem.cpp \
     biesseprogramm.cpp \
     circlegraphicsitem.cpp \
+    graphicsitem.cpp \
     linegraphicsitem.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -110,6 +111,7 @@ HEADERS += \
     arcgraphicsitem.h \
     biesseprogramm.h \
     circlegraphicsitem.h \
+    graphicsitem.h \
     linegraphicsitem.h \
     mainwindow.h \
     paneldialog.h \

@@ -23,9 +23,8 @@ Line::Line ()
     Entity(),
     start(),
     end()
-
 {
-
+elementType = LINE;
 }
 
 Line::~Line ()
@@ -37,7 +36,9 @@ Line::Line (const Line &obj)
     Entity(obj),
     start(obj.start),
     end(obj.end)
+
 {
+    elementType = LINE;
 }
 
 const Line & Line::operator = (const Line &obj)
@@ -48,6 +49,7 @@ const Line & Line::operator = (const Line &obj)
 
         start = obj.start;
         end   = obj.end;
+        elementType = LINE;
     }
 
     return *this;
@@ -113,7 +115,7 @@ void Line::readDXF (Tokenizer &tokenizer)
             }
         }
     }
-    elementType = LINE;
+
     tokenizer.gotoBack();
 }
 
