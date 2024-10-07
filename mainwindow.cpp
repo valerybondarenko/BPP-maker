@@ -24,14 +24,11 @@ panelRect->setRect(0.0,0.0,680,660);
 panelRect->setBrush(Qt::gray);
 panelRect->setPen(QPen(Qt::red));
 panelRect->setFlag(QGraphicsItem::ItemIsMovable);
-transformation.setMatrix(1,0,0,0,-1,0,0,0,1);
-transformation.translate(0.0,panelRect->rect().height());
-panelRect->setTransform(transformation);
 panelDialog->init(800.0,500.0,18.0);
 panelDialog->exec();
 scene->addItem(panelRect);
-arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),270.0,00.0,80);
-arcItem->setParentItem(panelRect);
+//arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),-90.0,180.0,80);
+//arcItem->setParentItem(panelRect);
 
 
 

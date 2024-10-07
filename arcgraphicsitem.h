@@ -21,7 +21,7 @@ private:
     QPointF midlePoint;
     float startAngle;
     float endAngle;
-    float arcAngle;
+    float spanAngle;
     float radius;
 
 

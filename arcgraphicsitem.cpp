@@ -1,5 +1,6 @@
 #include "arcgraphicsitem.h"
 
+
 ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent)
 {
 
@@ -14,11 +15,13 @@ ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent, QPointF center, float st
     //
     if(startAngle<endAngle)
     {
-        arcAngle =  endAngle - startAngle;
+        spanAngle =  endAngle - startAngle;
     } else
+
     {
-        arcAngle = startAngle - endAngle;
+        spanAngle = 360 - startAngle + endAngle ;
     }
+
 
 }
 
@@ -35,10 +38,12 @@ float ArcGraphicsItem::normalizeAngle(float value)
 
 QRectF ArcGraphicsItem::boundingRect() const
 {
-    return QRectF(QPointF(centerPoint.x()+radius,centerPoint.y()+radius),QPointF(centerPoint.x()-radius,centerPoint.y()-radius));
+    float dy = parentItem()->boundingRect().height();
+    return QRectF(QPointF(centerPoint.x()+radius,dy - centerPoint.y()+radius),
+                  QPointF(centerPoint.x()-radius,dy - centerPoint.y()-radius));
 }
 
 void ArcGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawArc(boundingRect(),startAngle*16,-arcAngle*16);
+    painter->drawArc(boundingRect(),startAngle*16,spanAngle*16);
 }

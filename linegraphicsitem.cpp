@@ -1,4 +1,5 @@
 #include "linegraphicsitem.h"
+#include<QDebug>
 
 LineGraphicsItem::LineGraphicsItem(QGraphicsItem *parent)
 {
@@ -23,21 +24,23 @@ QPointF LineGraphicsItem::getL_End() const
 
 QRectF LineGraphicsItem::boundingRect() const
 {
-
-    return QRectF(l_Start,l_End);
+float dy = parentItem()->boundingRect().height();
+    return QRectF(QPoint(l_Start.x(),dy-l_Start.y()),QPoint(l_End.x(),dy-l_End.y()));
 }
 
 void LineGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QPen redPen(Qt::red);
     QPen blackPen(Qt::black);
+
     if (isSelected()) {
         painter->setPen(redPen);
     } else {
         painter->setPen(blackPen);
     }
-    painter->drawLine(l_Start,l_End);
-   // painter->drawArc()
+
+    float dy = parentItem()->boundingRect().height();
+    painter->drawLine(QPoint(l_Start.x(),dy-l_Start.y()),QPoint(l_End.x(),dy-l_End.y()));
 }
 
 QPointF LineGraphicsItem::getL_Start() const
