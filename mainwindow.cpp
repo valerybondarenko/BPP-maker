@@ -8,6 +8,7 @@
 #include"Line.h"
 #include "Arc.h"
 #include "Circle.h"
+#include "graphicsitem.h"
 
 
 
@@ -17,7 +18,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
 scene = new QGraphicsScene(this);
 using namespace ru_tcl_dxf;
 panelRect = new QGraphicsRectItem;
@@ -25,16 +25,6 @@ panelDialog = new PanelDialog(this);
 connect(panelDialog,SIGNAL(confirm(float,float,float)),this,SLOT(panelData(float,float,float)));
 panelRect->setRect(0.0,0.0,680,660);
 panelRect->setBrush(Qt::gray);
-panelRect->setPen(QPen(Qt::red));
-panelRect->setFlag(QGraphicsItem::ItemIsMovable);
-panelDialog->init(800.0,500.0,18.0);
-panelDialog->exec();
-scene->addItem(panelRect);
-//arcItem = new ArcGraphicsItem(nullptr,QPointF(100.0,100.0),0.0,360.0,8);
-//arcItem->setParentItem(panelRect);
-
-
-
 ui->graphicsView->setScene(scene);
 }
 
@@ -53,18 +43,39 @@ void MainWindow::on_actionOpen_triggered()
         return;
     trans.readDXF(fileName.toStdString());
     itemList = trans.getEntities()->getItems();
-    int etype = 0;
-
-    for (unsigned long long i=0;i<itemList.size();i++)
+    float leftCorner = 1525.0;
+    float rightCorner =0.0;
+    float bottomCorner = 1525.0;
+    float topCorner = 0.0;
+     for (unsigned long long i=0;i<itemList.size();i++)
     {
-
         switch (itemList.at(i)->elementType)        
         {
-
         case  ru_tcl_dxf::Entity::LINE:
         {
             lineItem = new LineGraphicsItem();
             ru_tcl_dxf::Line *dxf_line = static_cast<ru_tcl_dxf::Line *>(itemList.at(i));
+
+            // lift panel corner
+            if(leftCorner > dxf_line->getStart().getX())
+                leftCorner = dxf_line->getStart().getX();
+            if(leftCorner > dxf_line->getEnd().getX())
+                leftCorner = dxf_line->getEnd().getX();
+            // right panel corner
+            if(rightCorner < dxf_line->getStart().getX())
+                rightCorner = dxf_line->getStart().getX();
+            if(rightCorner < dxf_line->getEnd().getX())
+                rightCorner = dxf_line->getEnd().getX();
+            // bottom panel corner
+            if(bottomCorner > dxf_line->getStart().getY())
+                bottomCorner = dxf_line->getStart().getY();
+            if(bottomCorner > dxf_line->getEnd().getY())
+                bottomCorner=dxf_line->getEnd().getY();
+            // top panel corner
+            if(topCorner < dxf_line->getStart().getY())
+                topCorner = dxf_line->getStart().getY();
+            if(topCorner < dxf_line->getEnd().getY())
+                topCorner=dxf_line->getEnd().getY();
             lineItem->setL_Start(QPointF(dxf_line->getStart().getX(),dxf_line->getStart().getY()));
             lineItem->setL_End(QPointF(dxf_line->getEnd().getX(),dxf_line->getEnd().getY()));
             lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
@@ -78,6 +89,14 @@ void MainWindow::on_actionOpen_triggered()
             float arcStartAngle = dxf_arc->getStartAngle();
             float arcEndAngle = dxf_arc->getEndAngle();
             float arcRadius = dxf_arc->getRadius();
+            if(leftCorner>arcCenter.x()-arcRadius)
+                leftCorner=arcCenter.x()-arcRadius;
+            if(rightCorner<arcCenter.x()+arcRadius)
+                rightCorner=arcCenter.x()+arcRadius;
+            if(bottomCorner>arcCenter.y()-arcRadius)
+                bottomCorner=arcCenter.y()-arcRadius;
+            if(topCorner<arcCenter.y()+arcRadius)
+                topCorner=arcCenter.y()+arcRadius;
             arcItem  = new ArcGraphicsItem(panelRect,arcCenter,arcStartAngle,arcEndAngle,arcRadius);
             arcItem->setFlag(QGraphicsItem::ItemIsSelectable);
             break;
@@ -87,11 +106,28 @@ void MainWindow::on_actionOpen_triggered()
             ru_tcl_dxf::Circle *dxf_circle = static_cast<ru_tcl_dxf::Circle *>(itemList.at(i));
             QPointF circleCenter(dxf_circle->getCenter().getX(),dxf_circle->getCenter().getY());
             float circleRadius = dxf_circle->getRadius();
+            if(leftCorner>circleCenter.x()-circleRadius)
+                leftCorner=circleCenter.x()-circleRadius;
+            if(rightCorner<circleCenter.x()+circleRadius)
+                rightCorner=circleCenter.x()+circleRadius;
+            if(bottomCorner>circleCenter.y()-circleRadius)
+                bottomCorner=circleCenter.y()-circleRadius;
+            if(topCorner<circleCenter.y()+circleRadius)
+                topCorner=circleCenter.y()+circleRadius;
             circleItem = new CircleGraphicsItem(panelRect,circleCenter,circleRadius);
         }
         default:{}
         }
     }
+     panelDialog->init(rightCorner-leftCorner,
+                       topCorner-bottomCorner,
+                       18.0);
+     panelDialog->exec();
+
+     for (int i = 0;i<panelRect->childItems().count();i++) {
+         static_cast<GraphicsItem*>(panelRect->childItems().at(i))->mooveObj(-leftCorner,-bottomCorner,0);
+     }
+     scene->addItem(panelRect);
 }
 
 void MainWindow::on_actionQuit_triggered()

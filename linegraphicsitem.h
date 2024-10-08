@@ -6,10 +6,10 @@
 #include<QObject>
 #include <QPainter>
 #include <QPen>
+#include "graphicsitem.h"
 
 
-
-class LineGraphicsItem : public QGraphicsItem
+class LineGraphicsItem : public GraphicsItem
 {
 
 public:
@@ -31,6 +31,12 @@ QPointF getL_End() const;
 
 
 
+
+// GraphicsItem interface
+public:
+virtual void mooveObj(float dxObj, float dyObj, float dzObj) override;
+virtual void rotateObj(QPoint rPoint, float angle) override{};
+virtual void scaleObj(QPoint sPoint, float rate) override{};
 };
 
 #endif // LINEGRAPHICSITEM_H

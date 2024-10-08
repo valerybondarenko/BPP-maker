@@ -22,6 +22,18 @@ QPointF LineGraphicsItem::getL_End() const
     return l_End;
 }
 
+void LineGraphicsItem::mooveObj(float dxObj, float dyObj, float dzObj)
+{
+    float value = l_Start.x();
+    l_Start.setX(value+dxObj);
+    value = l_Start.y();
+    l_Start.setY(value+dyObj);
+    value = l_End.x();
+    l_End.setX(value+dxObj);
+    value = l_End.y();
+    l_End.setY(value+dyObj);
+}
+
 QRectF LineGraphicsItem::boundingRect() const
 {
 float dy = parentItem()->boundingRect().height();

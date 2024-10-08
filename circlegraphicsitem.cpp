@@ -28,3 +28,11 @@ void CircleGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem
     painter->drawArc(boundingRect(),0,360*16);
 
 }
+
+void CircleGraphicsItem::mooveObj(float dxObj, float dyObj, float dzObj)
+{
+    float value = centerPoint.x();
+    centerPoint.setX(value+dxObj);
+    value = centerPoint.y();
+    centerPoint.setY(value+dyObj);
+}

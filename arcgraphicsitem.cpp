@@ -22,8 +22,6 @@ ArcGraphicsItem::ArcGraphicsItem(QGraphicsItem *parent, QPointF center, float st
     {
         spanAngle = 360 - startAngle + endAngle ;
     }
-
-
 }
 
 float ArcGraphicsItem::normalizeAngle(float value)
@@ -47,4 +45,12 @@ QRectF ArcGraphicsItem::boundingRect() const
 void ArcGraphicsItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawArc(boundingRect(),startAngle*16,spanAngle*16);
+}
+
+void ArcGraphicsItem::mooveObj(float dxObj, float dyObj, float dzObj)
+{
+    float value = centerPoint.x();
+    centerPoint.setX(value+dxObj);
+    value = centerPoint.y();
+    centerPoint.setY(value+dyObj);
 }
