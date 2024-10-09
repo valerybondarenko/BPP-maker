@@ -38,6 +38,7 @@ std::vector <ru_tcl_dxf::Entity*> itemList;
 
 QGraphicsScene *scene;
 QGraphicsRectItem *panelRect;
+QGraphicsRectItem *importRect;
 LineGraphicsItem *lineItem;
 ArcGraphicsItem *arcItem;
 CircleGraphicsItem *circleItem;

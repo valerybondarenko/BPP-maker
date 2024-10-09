@@ -21,10 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
 scene = new QGraphicsScene(this);
 using namespace ru_tcl_dxf;
 panelRect = new QGraphicsRectItem;
+importRect  = new QGraphicsRectItem;
 panelDialog = new PanelDialog(this);
 connect(panelDialog,SIGNAL(confirm(float,float,float)),this,SLOT(panelData(float,float,float)));
-panelRect->setRect(0.0,0.0,680,660);
-panelRect->setBrush(Qt::gray);
 ui->graphicsView->setScene(scene);
 }
 
@@ -43,10 +42,10 @@ void MainWindow::on_actionOpen_triggered()
         return;
     trans.readDXF(fileName.toStdString());
     itemList = trans.getEntities()->getItems();
-    float leftCorner = 1525.0;
-    float rightCorner =0.0;
-    float bottomCorner = 1525.0;
-    float topCorner = 0.0;
+    float leftLimit = 1525.0;
+    float rightLimit = 0.0;
+    float bottomLimit = 1525.0;
+    float topLimit = 0.0;
      for (unsigned long long i=0;i<itemList.size();i++)
     {
         switch (itemList.at(i)->elementType)        
@@ -55,27 +54,26 @@ void MainWindow::on_actionOpen_triggered()
         {
             lineItem = new LineGraphicsItem();
             ru_tcl_dxf::Line *dxf_line = static_cast<ru_tcl_dxf::Line *>(itemList.at(i));
-
-            // lift panel corner
-            if(leftCorner > dxf_line->getStart().getX())
-                leftCorner = dxf_line->getStart().getX();
-            if(leftCorner > dxf_line->getEnd().getX())
-                leftCorner = dxf_line->getEnd().getX();
+            // left panel limit
+            if(leftLimit > dxf_line->getStart().getX())
+                leftLimit = dxf_line->getStart().getX();
+            if(leftLimit > dxf_line->getEnd().getX())
+                leftLimit = dxf_line->getEnd().getX();
             // right panel corner
-            if(rightCorner < dxf_line->getStart().getX())
-                rightCorner = dxf_line->getStart().getX();
-            if(rightCorner < dxf_line->getEnd().getX())
-                rightCorner = dxf_line->getEnd().getX();
+            if(rightLimit < dxf_line->getStart().getX())
+                rightLimit = dxf_line->getStart().getX();
+            if(rightLimit < dxf_line->getEnd().getX())
+                rightLimit = dxf_line->getEnd().getX();
             // bottom panel corner
-            if(bottomCorner > dxf_line->getStart().getY())
-                bottomCorner = dxf_line->getStart().getY();
-            if(bottomCorner > dxf_line->getEnd().getY())
-                bottomCorner=dxf_line->getEnd().getY();
+            if(bottomLimit > dxf_line->getStart().getY())
+                bottomLimit = dxf_line->getStart().getY();
+            if(bottomLimit > dxf_line->getEnd().getY())
+                bottomLimit=dxf_line->getEnd().getY();
             // top panel corner
-            if(topCorner < dxf_line->getStart().getY())
-                topCorner = dxf_line->getStart().getY();
-            if(topCorner < dxf_line->getEnd().getY())
-                topCorner=dxf_line->getEnd().getY();
+            if(topLimit < dxf_line->getStart().getY())
+                topLimit = dxf_line->getStart().getY();
+            if(topLimit < dxf_line->getEnd().getY())
+                topLimit=dxf_line->getEnd().getY();
             lineItem->setL_Start(QPointF(dxf_line->getStart().getX(),dxf_line->getStart().getY()));
             lineItem->setL_End(QPointF(dxf_line->getEnd().getX(),dxf_line->getEnd().getY()));
             lineItem->setFlag(QGraphicsItem::ItemIsSelectable);
@@ -89,14 +87,14 @@ void MainWindow::on_actionOpen_triggered()
             float arcStartAngle = dxf_arc->getStartAngle();
             float arcEndAngle = dxf_arc->getEndAngle();
             float arcRadius = dxf_arc->getRadius();
-            if(leftCorner>arcCenter.x()-arcRadius)
-                leftCorner=arcCenter.x()-arcRadius;
-            if(rightCorner<arcCenter.x()+arcRadius)
-                rightCorner=arcCenter.x()+arcRadius;
-            if(bottomCorner>arcCenter.y()-arcRadius)
-                bottomCorner=arcCenter.y()-arcRadius;
-            if(topCorner<arcCenter.y()+arcRadius)
-                topCorner=arcCenter.y()+arcRadius;
+            if(leftLimit>arcCenter.x()-arcRadius)
+                leftLimit=arcCenter.x()-arcRadius;
+            if(rightLimit<arcCenter.x()+arcRadius)
+                rightLimit=arcCenter.x()+arcRadius;
+            if(bottomLimit>arcCenter.y()-arcRadius)
+                bottomLimit=arcCenter.y()-arcRadius;
+            if(topLimit<arcCenter.y()+arcRadius)
+                topLimit=arcCenter.y()+arcRadius;
             arcItem  = new ArcGraphicsItem(panelRect,arcCenter,arcStartAngle,arcEndAngle,arcRadius);
             arcItem->setFlag(QGraphicsItem::ItemIsSelectable);
             break;
@@ -106,28 +104,29 @@ void MainWindow::on_actionOpen_triggered()
             ru_tcl_dxf::Circle *dxf_circle = static_cast<ru_tcl_dxf::Circle *>(itemList.at(i));
             QPointF circleCenter(dxf_circle->getCenter().getX(),dxf_circle->getCenter().getY());
             float circleRadius = dxf_circle->getRadius();
-            if(leftCorner>circleCenter.x()-circleRadius)
-                leftCorner=circleCenter.x()-circleRadius;
-            if(rightCorner<circleCenter.x()+circleRadius)
-                rightCorner=circleCenter.x()+circleRadius;
-            if(bottomCorner>circleCenter.y()-circleRadius)
-                bottomCorner=circleCenter.y()-circleRadius;
-            if(topCorner<circleCenter.y()+circleRadius)
-                topCorner=circleCenter.y()+circleRadius;
+            if(leftLimit>circleCenter.x()-circleRadius)
+                leftLimit=circleCenter.x()-circleRadius;
+            if(rightLimit<circleCenter.x()+circleRadius)
+                rightLimit=circleCenter.x()+circleRadius;
+            if(bottomLimit>circleCenter.y()-circleRadius)
+                bottomLimit=circleCenter.y()-circleRadius;
+            if(topLimit<circleCenter.y()+circleRadius)
+                topLimit=circleCenter.y()+circleRadius;
             circleItem = new CircleGraphicsItem(panelRect,circleCenter,circleRadius);
         }
         default:{}
         }
     }
-     panelDialog->init(rightCorner-leftCorner,
-                       topCorner-bottomCorner,
+     panelDialog->init(rightLimit-leftLimit,
+                       topLimit-bottomLimit,
                        18.0);
      panelDialog->exec();
 
      for (int i = 0;i<panelRect->childItems().count();i++) {
-         static_cast<GraphicsItem*>(panelRect->childItems().at(i))->mooveObj(-leftCorner,-bottomCorner,0);
+         static_cast<GraphicsItem*>(panelRect->childItems().at(i))->mooveObj(-leftLimit,-bottomLimit,0);
      }
      scene->addItem(panelRect);
+     scene->addItem(importRect);
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -137,5 +136,12 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::panelData(float lpx, float lpy, float lpz)
 {
-    panelRect->setRect(0.0,0.0,lpx,lpy);
+    QPen greenPen(Qt::green);
+    greenPen.setWidth(1);
+    QPen bluePen(Qt::blue);
+    bluePen.setWidth(1);
+    importRect->setRect(0.0,0.0,lpx,lpy);
+    importRect->setPen(greenPen);
+    panelRect->setRect(lpx+50,0.0,lpx,lpy);
+    panelRect->setPen(bluePen);
 }
