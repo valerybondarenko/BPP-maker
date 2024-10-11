@@ -19,18 +19,31 @@ PanelDialog::~PanelDialog()
     delete ui;
 }
 
-void PanelDialog::init(float lpx, float lpy, float lpz)
+void PanelDialog::init(QRectF rect)
 {
-ui->xEdit->setText(QString::number(lpx));
-ui->yEdit->setText(QString::number(lpy));
-ui->zEdit->setText(QString::number(lpz));
+    dxfRect = rect;
+    ui->xEdit->setText(QString::number(rect.width()));
+    ui->yEdit->setText(QString::number(rect.height()));
+    ui->zEdit->setText(QString::number(18.00));
 }
 
 
-
 void PanelDialog::on_buttonBox_accepted()
-{
-    emit confirm(ui->xEdit->text().toFloat(),
-                 ui->yEdit->text().toFloat(),
-                 ui->zEdit->text().toFloat());
+{    
+    if (ui->centeringCheckBox)
+    {
+        float dx = ui->xEdit->text().toFloat() - dxfRect.width();
+        float dy = ui->yEdit->text().toFloat() - dxfRect.height();
+        dxfRect.setLeft(dx/2);
+        dxfRect.setBottom(dy/2);
+        dxfRect.setWidth(ui->xEdit->text().toFloat());
+        dxfRect.setHeight(ui->yEdit->text().toFloat());
+    } else
+    {
+        dxfRect.setLeft(0.0);
+        dxfRect.setBottom(0.0);
+        dxfRect.setWidth(ui->xEdit->text().toFloat());
+        dxfRect.setHeight(ui->yEdit->text().toFloat());
+    }
+    emit confirm(dxfRect);
 }

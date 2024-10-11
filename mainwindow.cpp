@@ -23,7 +23,7 @@ using namespace ru_tcl_dxf;
 panelRect = new QGraphicsRectItem;
 importRect  = new QGraphicsRectItem;
 panelDialog = new PanelDialog(this);
-connect(panelDialog,SIGNAL(confirm(float,float,float)),this,SLOT(panelData(float,float,float)));
+connect(panelDialog,SIGNAL(confirm(QRectF)),this,SLOT(panelData(QRectF)));
 ui->graphicsView->setScene(scene);
 }
 
@@ -117,16 +117,17 @@ void MainWindow::on_actionOpen_triggered()
         default:{}
         }
     }
-     panelDialog->init(rightLimit-leftLimit,
-                       topLimit-bottomLimit,
-                       18.0);
+     QRectF dxfRect;
+     dxfRect.setLeft(leftLimit);
+     dxfRect.setRight(rightLimit);
+     dxfRect.setBottom(bottomLimit);
+     dxfRect.setTop(-topLimit);
+     panelDialog->init(dxfRect);
      panelDialog->exec();
 
-     for (int i = 0;i<panelRect->childItems().count();i++) {
-         static_cast<GraphicsItem*>(panelRect->childItems().at(i))->mooveObj(-leftLimit,-bottomLimit,0);
-     }
-     scene->addItem(panelRect);
-     scene->addItem(importRect);
+
+
+    // scene->addItem(importRect);
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -134,14 +135,18 @@ void MainWindow::on_actionQuit_triggered()
     close();
 }
 
-void MainWindow::panelData(float lpx, float lpy, float lpz)
+void MainWindow::panelData(QRectF rect)
 {
     QPen greenPen(Qt::green);
     greenPen.setWidth(1);
     QPen bluePen(Qt::blue);
     bluePen.setWidth(1);
-    importRect->setRect(0.0,0.0,lpx,lpy);
-    importRect->setPen(greenPen);
-    panelRect->setRect(lpx+50,0.0,lpx,lpy);
-    panelRect->setPen(bluePen);
+//    importRect->setRect(0.0,0.0,lpx,lpy);
+//    importRect->setPen(greenPen);
+    panelRect->setRect(0.0,0.0,rect.width(),rect.height());
+    panelRect->setPen(greenPen);
+    for (int i = 0;i<panelRect->childItems().count();i++) {
+        static_cast<GraphicsItem*>(panelRect->childItems().at(i))->mooveObj(rect.left()/2,rect.bottom()/2,0);
+    }
+    scene->addItem(panelRect);
 }

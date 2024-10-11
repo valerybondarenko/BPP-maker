@@ -15,9 +15,9 @@ class PanelDialog : public QDialog
 public:
     explicit PanelDialog(QWidget *parent = nullptr);
     ~PanelDialog();
-    void init(float lpx,float lpy, float lpz);
+    void init(QRectF rect);
 signals:
-void confirm(float,float,float);
+void confirm(QRectF);
 
 
 private slots:
@@ -25,6 +25,7 @@ void on_buttonBox_accepted();
 
 private:
     Ui::PanelDialog *ui;
+    QRectF dxfRect;
 };
 
 #endif // PANELDIALOG_H

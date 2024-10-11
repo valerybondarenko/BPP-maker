@@ -28,14 +28,13 @@ public:
 private slots:
     void on_actionOpen_triggered();
     void on_actionQuit_triggered();
-    void panelData(float lpx,float lpy,float lpz);
+    void panelData(QRectF rect);
 
 private:
     Ui::MainWindow *ui;   
 
 ru_tcl_dxf::Translator trans;
 std::vector <ru_tcl_dxf::Entity*> itemList;
-
 QGraphicsScene *scene;
 QGraphicsRectItem *panelRect;
 QGraphicsRectItem *importRect;
